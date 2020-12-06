@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Afternoon Workout",
+    "startingDate": "4 décembre 2020 à 15:30:00 UTC+1",
+    "notes": "",
+    "exercices": [
+      {
+        "name": "Bench Press",
+        "notes": "",
+        "sets": [
+          {
+            "weight": "60",
+            "unit": "kg",
+            "reps": "10",
+            "rpe": ""
+          },
+          {
+            "weight": "60",
+            "unit": "kg",
+            "reps": "9",
+            "rpe": ""
+          }
+        ]
+      }
+    ]
+  }
+]
