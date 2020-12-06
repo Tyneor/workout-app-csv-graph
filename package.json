@@ -25,7 +25,12 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "firebase": "^8.1.2",
+    "fp-ts": "^2.9.1",
+    "io-ts": "^2.2.13",
     "papaparse": "^5.3.0",
+    "rxfire": "^4.0.0",
+    "rxjs": "^6.6.3",
     "sirv-cli": "^1.0.0"
   }
 }
