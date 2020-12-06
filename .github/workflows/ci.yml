@@ -13,6 +13,6 @@ jobs:
       with:
         node-version: '12.x'
     - name: Install dependencies
-    - run: npm install -D
+      run: npm install -D
     - name: Formatting with prettier
       run: npm run format
