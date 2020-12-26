@@ -1,24 +1,38 @@
 [
   {
     "name": "Afternoon Workout",
-    "startingDate": "4 décembre 2020 à 15:30:00 UTC+1",
-    "notes": "",
-    "exercices": [
+    "notes": "good",
+    "exercises": [
       {
         "name": "Bench Press",
-        "notes": "",
+        "notes": "paused",
         "sets": [
           {
-            "weight": "60",
+            "weight": 60,
             "unit": "kg",
-            "reps": "10",
-            "rpe": ""
+            "reps": 10,
+            "rpe": 8
           },
           {
-            "weight": "60",
+            "weight": 60,
             "unit": "kg",
-            "reps": "9",
-            "rpe": ""
+            "reps": 9
+          }
+        ]
+      },
+      {
+        "name": "Front Squat",
+        "sets": [
+          {
+            "weight": 64,
+            "unit": "kg",
+            "reps": 10
+          },
+          {
+            "weight": 66,
+            "unit": "kg",
+            "reps": 10,
+            "rpe": 9
           }
         ]
       }
