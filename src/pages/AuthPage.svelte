@@ -3,8 +3,6 @@
 
   import AuthForm from "../components/AuthForm.svelte";
 
-  export let user = null;
-
   function loginWithGoogle() {
     auth.signInWithPopup(googleProvider);
   }
@@ -16,15 +14,6 @@
   function registerWithEmail({ email, password }) {
     auth.createUserWithEmailAndPassword(email, password);
   }
-
-  auth.onAuthStateChanged(async (firebaseUser) => {
-    if (!firebaseUser) {
-      user = firebaseUser;
-    } else {
-      const { displayName, photoURL, uid } = firebaseUser;
-      user = { displayName, photoURL, uid };
-    }
-  });
 </script>
 
 <AuthForm
