@@ -1,49 +1,34 @@
 <script lang="ts">
-  import { auth, googleProvider } from "./firebase";
+  import HistoryPage from "./pages/HistoryPage.svelte";
+  import AuthPage from "./pages/AuthPage.svelte";
 
-  import Profile from "./Profile.svelte";
-  import Workouts from "./Workouts.svelte";
-  import AuthForm from "./AuthForm.svelte";
-  import CSVInput from "./components/CSVInput.svelte";
+  import Profile from "./components/Profile.svelte";
+  // import AuthForm from "./components/AuthForm.svelte";
+  import Appbar from "./components/Appbar.svelte";
 
   let user;
 
-  function loginWithGoogle() {
-    auth.signInWithPopup(googleProvider);
-  }
-
-  function loginWithEmail({ email, password }) {
-    auth.signInWithEmailAndPassword(email, password);
-  }
-
-  function registerWithEmail({ email, password }) {
-    auth.createUserWithEmailAndPassword(email, password);
-  }
-
-  auth.onAuthStateChanged(async (firebaseUser) => {
-    if (!firebaseUser) {
-      user = firebaseUser;
-    } else {
-      const { displayName, photoURL, uid } = firebaseUser;
-      user = { displayName, photoURL, uid };
-    }
-  });
+  $: console.log(user?.uid);
 </script>
+
+<style>
+  main {
+    padding-bottom: var(--app-bar-height);
+  }
+
+  section {
+    padding: 1em;
+  }
+</style>
 
 <main>
   {#if user}
-    <Profile displayName={user.displayName} photoURL={user.photoURL} />
-    <button on:click={() => auth.signOut()}>Logout</button>
-    <hr />
-    <Workouts uid={user.uid} />
-
-    <hr />
-
-    <CSVInput />
+    <Profile {...user} />
+    <section>
+      <HistoryPage uid={user.uid} />
+    </section>
+    <Appbar />
   {:else}
-    <AuthForm
-      on:login-with-google={loginWithGoogle}
-      on:login-with-email={(e) => loginWithEmail(e.detail)}
-      on:register-with-email={(e) => registerWithEmail(e.detail)} />
+    <AuthPage bind:user />
   {/if}
 </main>

@@ -1,12 +1,12 @@
 <script lang="ts">
   import { parse } from "papaparse";
-  import { parseLiftingSet, strDateAndTime } from "../utils";
-  import type Workout from "../Workout";
+  import { db } from "../firebase";
+  import { parseSet, ParsingError } from "../parsing";
+
+  export let uid;
 
   let files: FileList;
   let fields = [];
-  // let sets = [];
-  let workouts: Map<number, Workout[]> = new Map();
 
   const upload = () => {
     const file = files[0];
@@ -18,55 +18,56 @@
 
       fields = res.meta.fields;
 
-      const sets = [];
-      for (const set of res.data) {
+      const workouts: Map<number, any> = new Map();
+      for (const line of res.data) {
         try {
-          sets.push(parseLiftingSet(set));
+          const { date, workoutName, exerciseName, ...set } = parseSet(line);
+          if (workouts.has(date)) {
+            const workout = workouts.get(date);
+            const exercise = workout.exercises.find(
+              (ex) => ex.name === exerciseName
+            );
+            if (exercise) {
+              exercise.sets.push(set);
+            } else {
+              workout.exercises.push({ name: exerciseName, sets: [set] });
+            }
+          } else {
+            const workout = {
+              uid,
+              name: workoutName,
+              startingDate: new Date(date),
+              exercises: [{ name: exerciseName, sets: [set] }],
+            };
+            workouts.set(date, workout);
+          }
         } catch (error) {
-          console.error(error);
+          if (error instanceof ParsingError) {
+            console.error("This set is invalid : ", line);
+          }
         }
       }
 
-      // sets.forEach((set) => {
-      //   const { Date: setDate, ...rest } = set;
-      //   if (workouts.has(setDate)) {
-      //     workouts.get(setDate).push(rest);
-      //   } else {
-      //     workouts.set(setDate, [rest]);
-      //   }
-      // });
-      // workouts = new Map(workouts); //trigger reactivity
-
-      // console.log(workouts);
+      workouts.forEach((workout) => {
+        db.collection("workouts").add(workout);
+      });
     };
+
     reader.onerror = function () {
       console.error("Unable to read " + file.name);
     };
   };
 </script>
 
-<input bind:files type="file" accept=".csv" on:change={upload} />
+<style>
+  input {
+    display: none;
+  }
+</style>
 
-<!-- {#each Array.from(workouts) as workout}workout + {workout[0]}{/each} -->
-
-{#each [...workouts] as [date, sets]}
-  <h2>{strDateAndTime(date)}</h2>
-  <table>
-    <thead>
-      <tr>
-        {#each fields as field}
-          <th>{field}</th>
-        {/each}
-      </tr>
-    </thead>
-    <tbody>
-      {#each sets as set}
-        <tr>
-          {#each fields as field}
-            <td>{set[field]}</td>
-          {/each}
-        </tr>
-      {/each}
-    </tbody>
-  </table>
-{/each}
+<button>
+  <label>
+    add workouts from csv
+    <input bind:files type="file" accept=".csv" on:change={upload} />
+  </label>
+</button>
