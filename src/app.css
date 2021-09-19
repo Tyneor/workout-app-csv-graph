@@ -1,0 +1,72 @@
+@import '@fontsource/montserrat';
+
+:root {
+	font-family: 'Montserrat';
+	--pure-white: #ffffff;
+	--bg-color: #111;
+	--accent-color: #c57adc;
+	--text-color: #eee;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+/* h1,
+h2,
+p {
+	font-weight: 400;
+	color: var(--heading-color);
+}
+
+p {
+	line-height: 1.5;
+}
+
+
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1rem;
+}
+
+pre {
+	font-size: 16px;
+	font-family: var(--font-mono);
+	background-color: rgba(255, 255, 255, 0.45);
+	border-radius: 3px;
+	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
+	padding: 0.5em;
+	overflow-x: auto;
+	color: var(--text-color);
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+} */

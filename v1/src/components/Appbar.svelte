@@ -5,6 +5,22 @@
   import ChartLine from "svelte-material-icons/ChartLine.svelte";
 </script>
 
+<nav>
+  <Link to="history">
+    <div class="link">
+      <History />
+      <span>History</span>
+    </div>
+  </Link>
+
+  <Link to="charts">
+    <div class="link">
+      <ChartLine />
+      <span>Charts</span>
+    </div>
+  </Link>
+</nav>
+
 <style>
   nav {
     background-color: #333;
@@ -30,19 +46,3 @@
     color: white;
   }
 </style>
-
-<nav>
-  <Link to="history">
-    <div class="link">
-      <History />
-      <span>History</span>
-    </div>
-  </Link>
-
-  <Link to="charts">
-    <div class="link">
-      <ChartLine />
-      <span>Charts</span>
-    </div>
-  </Link>
-</nav>
