@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { timestampToDateFormatter } from "../utils";
   import type { Set } from "../utils";
   import InlineExercise from "./InlineExercise.svelte";
 
@@ -12,19 +13,37 @@
   export let name: string;
   export let exercises: Exercise[];
 
-  const timestampToDisplayedDate = (timestamp) => {
-    const date: Date = timestamp.toDate();
-    return date.toLocaleDateString(undefined, {
-      day: "numeric",
-      month: "long",
-    });
-  };
+  const dateFormatter = timestampToDateFormatter({
+    day: "numeric",
+    month: "long",
+  });
 
   const inlineProps = (exercise: Exercise) => {
     const { notes, ...rest } = exercise;
     return rest;
   };
 </script>
+
+<div>
+  <h1><b>{name}</b></h1>
+  <h2>{dateFormatter(startingDate)}</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Exercise</th>
+        <th>Best set</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each exercises as exercise}
+        <tr>
+          <InlineExercise {...inlineProps(exercise)} />
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+</div>
 
 <style>
   div {
@@ -52,24 +71,3 @@
     text-align: right;
   }
 </style>
-
-<div>
-  <h1><b>{name}</b></h1>
-  <h2>{timestampToDisplayedDate(startingDate)}</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Exercise</th>
-        <th>Best set</th>
-      </tr>
-    </thead>
-    <tbody>
-      {#each exercises as exercise}
-        <tr>
-          <InlineExercise {...inlineProps(exercise)} />
-        </tr>
-      {/each}
-    </tbody>
-  </table>
-</div>

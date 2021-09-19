@@ -1,4 +1,6 @@
 <script>
+  import { Link } from "svelte-routing";
+
   import History from "svelte-material-icons/History.svelte";
   import ChartLine from "svelte-material-icons/ChartLine.svelte";
 </script>
@@ -11,34 +13,36 @@
     bottom: 0;
     width: 100%;
     height: var(--app-bar-height);
-  }
-
-  ul {
-    list-style-type: none;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 100%;
   }
 
-  li {
+  .link {
     display: inline;
-    color: white;
+    color: rgb(235, 235, 235);
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  .link:hover {
+    color: white;
+  }
 </style>
 
 <nav>
-  <ul>
-    <li>
+  <Link to="history">
+    <div class="link">
       <History />
       <span>History</span>
-    </li>
-    <li>
+    </div>
+  </Link>
+
+  <Link to="charts">
+    <div class="link">
       <ChartLine />
-      <span>Graphs</span>
-    </li>
-  </ul>
+      <span>Charts</span>
+    </div>
+  </Link>
 </nav>

@@ -4,7 +4,8 @@ import { db } from "./firebase";
 export const workouts = writable([]);
 
 export const startRealTimeWorkoutsQuery = (uid: string) => {
-  db.collection("workouts")
+  return db
+    .collection("workouts")
     .where("uid", "==", uid)
     .orderBy("startingDate", "desc")
     .onSnapshot((querySnapshot) => {

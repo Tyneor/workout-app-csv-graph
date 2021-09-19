@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { db } from "../firebase";
   import InlineWorkout from "../history/InlineWorkout.svelte";
   import { workouts } from "../stores";
-  // User ID passed from parent
 
   const inlineProps = (workout) => {
     const { uid, notes, ...rest } = workout;
