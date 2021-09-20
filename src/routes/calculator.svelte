@@ -1,7 +1,4 @@
-<svelte:head>
-	<title>Calculator</title>
-</svelte:head>
-
-<section>
-	<h1>Calculator</h1>
-</section>
+<script lang="ts">
+	import { routeTitle } from '$lib/stores';
+	routeTitle.set('Calculator');
+</script>

@@ -1,7 +1,7 @@
-<svelte:head>
-	<title>Charts</title>
-</svelte:head>
+<script lang="ts">
+	import TotalWeight from '$lib/TotalWeight.svelte';
+	import { routeTitle } from '$lib/stores';
+	routeTitle.set('Charts');
+</script>
 
-<section>
-	<h1>Charts</h1>
-</section>
+<TotalWeight />
