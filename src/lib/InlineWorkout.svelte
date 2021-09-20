@@ -37,29 +37,44 @@
 	</table>
 </div>
 
-<style>
+<style lang="scss">
 	div {
-		border: 1px solid black;
-		padding: 10px;
+		background-color: #181818;
+		padding: 1rem;
 		border-radius: 5px;
-	}
+		cursor: pointer;
 
-	h1 {
-		font-size: medium;
-	}
-	h2 {
-		font-size: small;
-	}
+		&:hover,
+		&:active {
+			background-color: #242424;
 
-	table {
-		width: 100%;
-	}
+			h1 {
+				color: var(--accent-color);
+			}
+		}
 
-	table th:nth-child(1) {
-		text-align: left;
-	}
+		h1 {
+			font-size: 1rem;
+			font-weight: 500;
+		}
+		h2 {
+			font-size: 0.8rem;
+			font-weight: 400;
+			color: #aaa;
+		}
 
-	table th:nth-child(2) {
-		text-align: right;
+		table {
+			width: 100%;
+			margin-top: 0.3rem;
+			font-size: 0.9rem;
+
+			th:nth-child(1) {
+				text-align: left;
+			}
+
+			th:nth-child(2) {
+				text-align: right;
+			}
+		}
 	}
 </style>
