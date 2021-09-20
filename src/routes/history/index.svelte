@@ -7,8 +7,8 @@
 
 <section>
 	{#if $workouts.length > 0}
-		{#each $workouts.reverse() as workoutSession}
-			<InlineWorkout {workoutSession} />
+		{#each $workouts.reverse() as workoutSession, index}
+			<InlineWorkout {index} {workoutSession} />
 		{/each}
 	{:else}
 		<p>

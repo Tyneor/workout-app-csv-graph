@@ -2,6 +2,7 @@
 	import { timestampToDateFormatter } from './utils';
 	import InlineExercise from './InlineExercise.svelte';
 
+	export let index = NaN;
 	export let workoutSession: WorkoutSession;
 
 	const dateFormatter = timestampToDateFormatter({
@@ -16,28 +17,34 @@
 	};
 </script>
 
-<div>
-	<h1><b>{workoutSession.name}</b></h1>
-	<h2>{dateFormatter(workoutSession.startingDate)}</h2>
+<a href={`/history/${index}`}>
+	<div>
+		<h1><b>{workoutSession.name}</b></h1>
+		<h2>{dateFormatter(workoutSession.startingDate)}</h2>
 
-	<table>
-		<thead>
-			<tr>
-				<th>Exercise</th>
-				<th>Best set</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each workoutSession.exercises as exercise}
+		<table>
+			<thead>
 				<tr>
-					<InlineExercise {...inlineProps(exercise)} />
+					<th>Exercise</th>
+					<th>Best set</th>
 				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				{#each workoutSession.exercises as exercise}
+					<tr>
+						<InlineExercise {...inlineProps(exercise)} />
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
+</a>
 
 <style lang="scss">
+	a {
+		color: unset;
+	}
+
 	div {
 		background-color: #181818;
 		padding: 1rem;

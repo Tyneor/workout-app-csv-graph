@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>{$routeTitle}</title>
+	<title>{$routeTitle} | WOG</title>
 </svelte:head>
 
 <main>
