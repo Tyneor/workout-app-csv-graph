@@ -17,13 +17,13 @@
 }
 
 * {
+	font-family: 'Montserrat';
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
 body {
-	font-family: 'Montserrat';
 	min-height: 100vh;
 	margin: 0;
 	background-color: var(--bg-color);
@@ -36,21 +36,20 @@ a {
 }
 
 button {
+	border-radius: 5px;
+	border: none;
 	outline: 2px solid var(--accent-color);
 	background-color: transparent;
 	color: var(--accent-color);
-	/* outline: none; */
-	border: none;
-	border-radius: 5px;
 }
 
 button:hover {
-	cursor: pointer;
 	outline: 2px solid transparent;
 	background-color: var(--accent-color);
 	color: white;
 }
 
+button:hover,
 button:hover > * {
 	cursor: pointer;
 }

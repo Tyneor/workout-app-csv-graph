@@ -11,17 +11,18 @@
 <main>
 	<h1>{$routeTitle}</h1>
 	<slot />
+	<div />
 	<NavBar />
 </main>
 
 <style lang="scss">
 	main {
+		position: relative;
+		display: grid;
+		grid-template-rows: auto 1fr calc(42px + 1rem);
 		height: 100vh;
 		width: 100vw;
-		max-width: 1024px;
 		overflow-y: auto;
-		display: flex;
-		flex-direction: column;
 
 		h1 {
 			position: sticky;
