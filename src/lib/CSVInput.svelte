@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { parse } from 'papaparse';
 	import { parseSet, ParsingError } from './parsing';
-	import { workouts } from './store';
+	import { workouts } from './stores';
 
 	let files: FileList;
 	let fields = [];
@@ -53,13 +53,21 @@
 
 <button>
 	<label>
-		add workouts from csv
+		Load workouts from a CSV file
 		<input bind:files type="file" accept=".csv" on:change={upload} />
 	</label>
 </button>
 
-<style>
-	input {
-		display: none;
+<style lang="scss">
+	label {
+		display: block;
+		padding: 1rem;
+		font-size: 1rem;
+		letter-spacing: 0.8px;
+		font-weight: 600;
+
+		input {
+			display: none;
+		}
 	}
 </style>

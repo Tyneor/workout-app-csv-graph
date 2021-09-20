@@ -6,15 +6,34 @@
 </script>
 
 <section>
-	{#each $workouts as workoutSession}
-		<InlineWorkout {workoutSession} />
-	{/each}
+	{#if $workouts.length > 0}
+		{#each $workouts.reverse() as workoutSession}
+			<InlineWorkout {workoutSession} />
+		{/each}
+	{:else}
+		<p>
+			<span>No workout loaded</span>
+			<span>Load yours from the <a href={'/'}>Home</a> page</span>
+		</p>
+	{/if}
 </section>
 
-<style>
+<style lang="scss">
 	section {
 		padding: 0 1rem;
 		display: grid;
 		gap: 10px;
+
+		p {
+			display: flex;
+			gap: 0.5rem;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			span:first-child {
+				font-size: 1.7rem;
+			}
+		}
 	}
 </style>

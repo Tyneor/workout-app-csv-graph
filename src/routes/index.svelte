@@ -10,7 +10,7 @@
 
 <section>
 	<CSVInput />
-	<span>Number of workouts : {$workouts.length}</span>
+	<span>Number of workouts: {$workouts.length}</span>
 </section>
 
 <style>
