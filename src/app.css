@@ -1,18 +1,29 @@
-@import '@fontsource/montserrat';
+@import '@fontsource/montserrat/100';
+@import '@fontsource/montserrat/200';
+@import '@fontsource/montserrat/300';
+@import '@fontsource/montserrat/400';
+@import '@fontsource/montserrat/500';
+@import '@fontsource/montserrat/600';
+@import '@fontsource/montserrat/700';
+@import '@fontsource/montserrat/800';
+@import '@fontsource/montserrat/900';
 
 :root {
-	font-family: 'Montserrat';
 	--pure-white: #ffffff;
 	--bg-color: #111;
 	--accent-color: #c57adc;
 	--text-color: #eee;
+	--app-bar-height: 3.2em;
 }
 
 * {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
 body {
+	font-family: 'Montserrat';
 	min-height: 100vh;
 	margin: 0;
 	background-color: var(--bg-color);
@@ -24,49 +35,22 @@ a {
 	text-decoration: none;
 }
 
-/* h1,
-h2,
-p {
-	font-weight: 400;
-	color: var(--heading-color);
-}
-
-p {
-	line-height: 1.5;
-}
-
-
-
-a:hover {
-	text-decoration: underline;
-}
-
-h1 {
-	font-size: 2rem;
-	text-align: center;
-}
-
-h2 {
-	font-size: 1rem;
-}
-
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--text-color);
-}
-
-input,
 button {
-	font-size: inherit;
-	font-family: inherit;
+	outline: 2px solid var(--accent-color);
+	background-color: transparent;
+	color: var(--accent-color);
+	/* outline: none; */
+	border: none;
+	border-radius: 5px;
 }
 
-button:focus:not(:focus-visible) {
-	outline: none;
-} */
+button:hover {
+	cursor: pointer;
+	outline: 2px solid transparent;
+	background-color: var(--accent-color);
+	color: white;
+}
+
+button:hover > * {
+	cursor: pointer;
+}
